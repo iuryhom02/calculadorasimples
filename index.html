@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <style>
+        /*Estilo das palavras contidas na página*/
+        body {
+            font-family: Arial;
+            background-color: rgb(134, 131, 131);
+        }
+        /*Estilo da calculadora que irá aparecer na tela*/
+        .calculadora {
+            width: 250px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-radius: 20px;
+            background-color: rgb(255, 255, 255);
+        }
+        #resultado {
+            text-align: right;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        /*Estilo do botão de igualdade*/   
+        .res{
+            cursor: pointer;
+            border-radius: 20px;
+            width: 90px;
+        }
+        /*Mudança na cor do botão de igualdade ao passar o cursor por cima*/
+        .res:hover{
+            background-color: rgb(137, 121, 230);
+            color: white;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <h2>Calculadora</h2>
+        <!--Botões númericos-->
+        <div id="resultado">0</div>
+        <button onclick="appendToResult('7')">7</button>
+        <button onclick="appendToResult('8')">8</button>
+        <button onclick="appendToResult('9')">9</button>        
+        <button onclick="appendToResult('4')">4</button>
+        <button onclick="appendToResult('5')">5</button>
+        <button onclick="appendToResult('6')">6</button>        
+        <button onclick="appendToResult('1')">1</button>
+        <button onclick="appendToResult('2')">2</button>
+        <button onclick="appendToResult('3')">3</button>        
+        <button onclick="appendToResult('0')">0</button>
+        <!--Botão para limpar-->
+        <button onclick="clearResult()">C</button>
+        <!--Operadores (+, -, *, /)-->
+        <button onclick="appendToResult('+')">+</button>
+        <button onclick="appendToResult('-')">-</button>
+        <button onclick="appendToResult('*')">*</button>
+        <button onclick="appendToResult('/')">/</button>
+        <!--Botão para mostrar o resultado da equação-->
+        <button onclick="calculateResult()" class="res">=</button>
+        
+    </div>
+
+    <script>
+        let resultElement = document.getElementById("resultado");
+        function appendToResult(value) {
+            //Adicionar o valor do botão apertado no resultado
+            resultElement.textContent += value;
+        }
+
+        function clearResult() {
+            //Limpa o resultado que está na tela
+            resultElement.textContent = "";
+        }
+
+        function calculateResult() {
+            try {
+                //Avalia a expressão e mostra o resultado
+                resultElement.textContent = eval(resultElement.textContent);
+            } catch (error) {
+                //Se houver um erro, vai exibir: "Erro"
+                resultElement.textContent = "Erro";
+            }
+        }
+    </script>
+</body>
+</html>
